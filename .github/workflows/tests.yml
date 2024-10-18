@@ -1,4 +1,4 @@
-name: Run tests with worflow_call
+name: Run tests with workflow_call
 
 on:
   workflow_call:
@@ -75,6 +75,7 @@ jobs:
         with:
           artifact: fcli
           version: unstable
+        continue-on-error: true
 
       - name: Initialize FCLI
         run: fluence provider init --env=local --no-input
@@ -83,7 +84,7 @@ jobs:
         run: fluence local up
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2.2.4
+        uses: pnpm/action-setup@v4
         with:
           version: 8
 
